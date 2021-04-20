@@ -13,7 +13,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="./"
-                        ><img src="public/images/33.png" alt="Logo"
+                        ><img src="public/images/poltek.png" alt="Logo"
                     /></a>
                     <a class="navbar-brand hidden" href="./"
                         ><img src="public/images/logo2.png" alt="Logo"
@@ -23,9 +23,17 @@
                 <div id="main-menu" class="main-menu collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="index.html">
+                            <a href="{{url('/admin')}}">
                                 <i class="menu-icon fa fa-dashboard"></i
                                 >Dashboard
+                            </a>
+                            <a href="{{url('/admin/kategori')}}">
+                                <i class="menu-icon fa fa-dashboard"></i
+                                >Kategori
+                            </a>
+                            <a href="{{url('/admin/tugas')}}">
+                                <i class="menu-icon fa fa-dashboard"></i
+                                >Tugas
                             </a>
                         </li>
                         <h3 class="menu-title">UI elements</h3>

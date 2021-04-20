@@ -1,6 +1,6 @@
 <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>ngoding kok template</title>
+        <title>Belajar Template Laravel</title>
         <meta name="description" content="ngoding kok template" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
