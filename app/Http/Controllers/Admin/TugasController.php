@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Task;
 use App\kategori;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Redirect;
+// use Symfony\Contracts\Service\Attribute\Required;
 
-class KategoriController extends Controller
+class TugasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +19,9 @@ class KategoriController extends Controller
     public function index()
     {
         //
-        $pagename = 'Data Kategori';
-        $data = kategori::all();
-        return view('admin.kategori.index', compact('data', 'pagename'));
+        $pagename = 'Data Tugas';
+        $data = Task::all();
+        return view('admin.tugas.index', compact('data', 'pagename'));
     }
 
     /**
@@ -30,6 +32,9 @@ class KategoriController extends Controller
     public function create()
     {
         //
+        $data_kategori = kategori::all();
+        $pagename = 'Form Input Tugas';
+        return view('admin.tugas.create', compact('pagename', 'data_kategori'));
     }
 
     /**
@@ -41,6 +46,31 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         //
+        //dd($request);
+        $request->validate([
+            'txtnama_tugas' => 'Required',
+            'id_kategori' => 'required',
+            'txtketerangan_tugas' => 'Required',
+            'radiostatus_tugas' => 'Required',
+        ]);
+
+        $data_tugas = new Task([
+
+            'nama_tugas' => $request->get('txtnama_tugas'),
+            'id_kategori' => $request->get('id_kategori'),
+            'ket_tugas' => $request->get('txtketerangan_tugas'),
+            'status_tugas' => $request->get('radiostatus_tugas'),
+        ]);
+
+        //dd($data_tugas);
+        $data_tugas->save();
+        return Redirect('admin/tugas')->with('sukses', 'tugas berhasil disimpan');
+        // Task::create([
+        //     'nama_tugas' => $request->get('txtnama_tugas'),
+        //     'id_keterangan' => $request->get('optionid_kategori'),
+        //     'ket_tugas' => $request->get('txtketerangan_tugas'),
+        //     'status_tugas' => $request->get('radiostatus_tugas'),
+        // ])
     }
 
     /**

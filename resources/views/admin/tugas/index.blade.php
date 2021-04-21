@@ -31,7 +31,7 @@
                 <ol class="breadcrumb text-right">
                     <li><a href="#">Dashboard</a></li>
                     <li><a href="#">Table</a></li>
-                    <li class="active">{{$pagename}}</li>
+                    <li class="active">Data table</li>
                 </ol>
             </div>
         </div>
@@ -44,8 +44,18 @@
 
             <div class="col-md-12">
                 <div class="card">
+
+                    @if(session()->get('sukses'))
+                    <div class="alert alert-success">
+                        {{session()->get('sukses')}}
+                    </div>
+
+
+                    @endif
+
                     <div class="card-header">
                         <strong class="card-title">{{$pagename}}</strong>
+                        <a href="{{route('tugas.create')}}" class="btn btn-primary pull-right"> Tambah </a>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -53,6 +63,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama</th>
+                                    <th>Kategori</th>
+                                    <th>Keterangan</th>
                                     <th>Status</th>
 
                                 </tr>
@@ -62,9 +74,11 @@
 
                                 @foreach($data as $i=>$row)
                                 <tr>
-                                    <td>{{$i++}}</td>
-                                    <td>{{$row->nama_kategori}}</td>
-                                    <td>{{$row->status_kategori}}</td>
+                                    <td>{{++$i}}</td>
+                                    <td>{{$row->nama_tugas}}</td>
+                                    <td>{{$row->id_kategori}}</td>
+                                    <td>{{$row->ket_tugas}}</td>
+                                    <td>{{$row->status_tugas}}</td>
                                 </tr>
                                 @endforeach
 
